@@ -12,7 +12,39 @@ namespace Teste2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Boa sorte!");
+            var numero = 0;
+            do
+            {
+                List<int> fibonacci = new List<int>();
+                Console.WriteLine("Por favor digite um número");
+                try
+                {
+                    numero = Convert.ToInt32(Console.ReadLine());
+                    if(numero > 0 && numero < 20) {
+                        for (int i = 0; i < numero; i++)
+                        {
+                            if(fibonacci.Count == 0) {
+                                fibonacci.Add(1);
+                            } else {
+                                var indexOlder = i - 1;
+                                if(indexOlder == 0) {
+                                    fibonacci.Add(fibonacci[indexOlder]);
+                                } else {
+                                    var anotherIndexOlder = i - 2;
+                                    fibonacci.Add(fibonacci[anotherIndexOlder] + fibonacci[indexOlder]);
+                                }
+                            }
+                        }
+                        Console.Write(string.Join(",", fibonacci));
+                    } else {
+                        Console.WriteLine("Valor inválido. Informe um número maior que 0 e menor que 20");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Número inválido");
+                }
+            } while (numero >= 20 || numero <= 0);
         }
     }
 }

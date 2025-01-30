@@ -11,7 +11,30 @@ namespace Teste1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Boa sorte!");
+            Console.WriteLine("Escreva algo:");
+            var texto = Console.ReadLine();
+            if(!string.IsNullOrEmpty(texto)) {
+                char[] characters = texto.ToCharArray();
+                var result = string.Empty;
+                for (int i = 0; i < characters.Length; i++)
+                {
+                    char character = characters[i];
+                    if(i == 0) 
+                    {
+                        result += character;
+                    } 
+                    else 
+                    {
+                        var indexOlder = i - 1;
+                        var oldChar = characters[indexOlder];
+                        if(oldChar.ToString().ToUpper() != character.ToString().ToUpper()) {
+                            result += character;
+                        }
+                    }
+                }
+                Console.Write(result);
+            }
+
         }
     }
 }
